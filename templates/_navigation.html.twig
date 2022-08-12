@@ -1,0 +1,7 @@
+{% for item in navigation %}
+	<li class="nav-links">
+		<a href="{{ path('single_page', {'slug': item.slug }) }}" title="Gouvernance" class="">
+			{{ item.title }}
+		</a>
+	</li>
+{% endfor %}

@@ -1,19 +1,122 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}| Orphanet
+		</title>
+		<link
+		rel="icon" href="{{ asset('images/favicon.png') }}">
+		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+			<link href="https://site-assets.fontawesome.com/releases/v6.0.0/css/all.css" type="text/css" rel="stylesheet"/>
+			<link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
+		{% endblock %}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+	</head>
+	<body>
+		{% block header %}
+			<section id="header" class="section">
+				<section class="sub-header">
+					<div class="container">
+						<nav>
+							<ul class="flex justify-content-end">
+								<li>
+									<a href="https://www.orpha.net/consor/cgi-bin/index.php?lng=FR" title="">ORPHANET FRANCE</a>
+								</li>
+								<li>
+									<a href="https://www.orpha.net/consor/cgi-bin/SupportGroup_Networks.php?lng=FR" title="">ENREGISTRER VOTRE ACTIVITÉ</a>
+								</li>
+								<li class="social_links">
+									<a title="social_label">Nous retrouver</a>
+									<a href="" target="_blank">
+										<i class="fa-brands fa-facebook-square"></i>
+									</a>
+									<a href="" target="_blank">
+										<i class="fa-brands fa-linkedin"></i>
+									</a>
+									<a href="" target="_blank">
+										<i class="fa-brands fa-twitter-square"></i>
+									</a>
+								</li>
+
+							</ul>
+						</nav>
+					</div>
+				</section>
+				<section class="" id="nav-container">
+					<div class="container">
+						<nav class="navbar grid">
+							<section class="navbar-section logo s_9col m_2col">
+								<a href="{{ path('app_home') }}" class="navbar-brand mr-10">
+									<img src="{{ asset('images/logo.png') }}" alt=""/>
+								</a>
+							</section>
+							<section class="navbar-section desktop-menu s_3col m_10col">
+
+								<nav class="dropmenu animated">
+									{% block header_navigation %}
+										<ul
+											class="txt-align-end justify-content-end">
+											{# Call function into HomeCotroller for loop in DB & display the navigation links #}
+											{{ render(controller('App\\Controller\\HomeController::navigation')) }}
+											<li><img class="flags" src="{{ asset('images/flags.svg') }}#FR" width="68" height="52"></li>
+										</ul>
+									{% endblock %}
+								</nav>
+							</section>
+						</nav>
+					</div>
+				</section>
+			</section>
+			{# <div class="mobile-menu">
+																																																					<div class="" id="mobile-nav-links">
+																																																						<div class="container grid grid-4">
+																																																							<div class="logo-white s_4col">
+																																																								{# <img src="{{ url('theme://images/logo/' ~ logo_mobile) }}" alt="{{ custom_logo_mobile.name }}"/> #}
+		{# </div>
+																																							<div class="s_4col">
+																																								<ul class="box-mobile nav-links-container">
+																																									{{ macros.nav_loop(pages) }}
+																																								</ul>
+																																								<ul class="box-mobile nav-sub-container">
+																																									{% for item in subheader_menu %}
+																																										<li>
+																																											<a href="{{ item.url }}">{{ item.label }}</a>
+																																										</li>
+																																									{% endfor %}
+																																								</ul>
+																																								<ul>
+																																									<li class="nav-social-container">
+																																										<p class="box-mobile">{{ social_label }}</p>
+																																										<a href="{{ facebook_link }}" target="_blank">
+																																											<i class="fa-brands fa-facebook-square"></i>
+																																										</a>
+																																										<a href="{{ linkedin_link }}" target="_blank">
+																																											<i class="fa-brands fa-linkedin"></i>
+																																										</a>
+																																										<a href="{{ twitter_link }}" target="_blank">
+																																											<i class="fa-brands fa-twitter-square"></i>
+																																										</a>
+																																									</li>
+																																								</ul>
+																																							</div>
+																																						</div>
+																																					</div>
+																																					<div class="burger-btn">
+																																						<i class="fa-solid fa-bars" id="toggle-btn"></i>
+																																					</div> #}
+			{# </div> #}
+		{% endblock %}
+		{% block body %}{% endblock %}
+	</body>
 </html>
+
+{% block javascripts %}
+	{{ encore_entry_script_tags('app') }}
+	<script type="text/javascript" src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('js/owl.carousel.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('js/site.js') }}"></script>
+{% endblock %}

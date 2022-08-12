@@ -1,0 +1,61 @@
+#hero-content {
+
+  padding-bottom: 150px;
+
+  .module-hero {
+    text-align: center;
+    position: relative;
+
+    @include at-least(medium) {
+      padding: 375px 0 175px 0;
+    }
+
+    @include up-to(medium) {
+      padding: 225px 0 75px 0;
+    }
+
+    img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      object-fit: cover;
+      max-height: 100%;
+      z-index: -1;
+    }
+  }
+
+
+  .no-img {
+    padding: 300px 0 50px 0;
+  }
+
+  .container-mkdw {
+    max-width: 1080px;
+    margin: auto;
+  }
+
+  .content-footer {
+    padding-top: 50px;
+
+    @include up-to(medium) {
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+
+    }
+
+    p {
+      margin: 0 0 15px 0 !important;
+    }
+
+    a {
+      margin: 0px 10px;
+
+      i {
+        font-size: 2.5rem;
+      }
+    }
+  }
+}

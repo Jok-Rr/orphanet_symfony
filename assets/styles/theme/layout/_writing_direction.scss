@@ -1,0 +1,67 @@
+[dir="rtl"] {
+
+  //Global
+
+  .btn-extern:before {
+    content: '';
+  }
+
+  .btn-extern:after {
+    content: '\f060';
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: var(--fa-display, inline-block);
+    font-style: normal;
+    font-variant: normal;
+    line-height: 1;
+    text-rendering: auto;
+    font-family: "Font Awesome 6 Pro";
+    font-weight: 900;
+  }
+
+  //Header
+  #header .sub-header li:not(:last-child) {
+    border-right: none;
+    padding-right: 0;
+    margin-right: 0;
+
+    border-left: solid 2px #FFFF;
+    padding-left: 10px;
+    margin-left: 10px;
+  }
+
+  #header .social_links a i {
+    margin-right: 10px;
+    margin-left: 0px;
+  }
+
+  //Orpha-service modules
+  .orpha-service .orphadata .data-item .icon-orange {
+    margin-right: 0px;
+    margin-left: 25px;
+  }
+
+  //Files Modules
+  #files-module .module-file .file_container div i {
+    margin-left: 15px;
+    margin-right: 0px;
+  }
+
+  //Slider
+  .owl-nav .fa-angle-left:before {
+    content: "\f105";
+  }
+
+  .owl-nav .fa-angle-right:before {
+    content: "\f104";
+  }
+
+  // Content page
+  .copy blockquote {
+    border-left: none;
+    border-right: 1px solid;
+  }
+  .copy ul {
+    padding-right: 60px;
+}
+}

@@ -1,0 +1,80 @@
+.module-bloc-content {
+  position: relative;
+  overflow: hidden;
+
+  .container {
+    @include at-least(medium) {
+      padding-top: 150px;
+      padding-bottom: 150px;
+    }
+
+    @include up-to(medium) {
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+
+    .left-part {
+
+      h3,
+      h1 {
+        margin-top: 0;
+        color: white;
+      }
+
+      @include up-to(medium) {
+        order: 2;
+      }
+
+      @include up-to(medium) {
+        .btn-secondary {
+          width: 100%;
+          text-align: center;
+        }
+      }
+    }
+
+    .right-part {
+      @include at-least(medium) {
+        grid-column-end: 13;
+        grid-column-start: 7;
+        max-width: 100%;
+        display: block;
+      }
+
+      figure {
+        @include at-least(medium) {
+          margin: 0;
+        }
+
+        img {
+          width: auto;
+          min-width: 100%;
+          height: 100%;
+          max-height: 70vh;
+          border-radius: 30px;
+          object-fit: cover;
+
+          @include up-to(medium) {
+            max-width: 100%;
+            margin-bottom: 40px;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  .copy {
+    a {
+      letter-spacing: 0.019em;
+      transition: none;
+      cursor: pointer;
+    }
+
+    a:hover {
+      color: inherit;
+      font-weight: $bold;
+      letter-spacing: 0;
+    }
+  }
+}

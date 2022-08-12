@@ -1,0 +1,130 @@
+/*
+----------------------------------
+CONFIG GRID & WRAPPER
+Modify only the variables below 
+GUIDE -> https://css-tricks.com/snippets/css/complete-guide-grid/
+----------------------------------
+*/
+
+//GRID SETTINGS
+$columns: 12;
+$gutters: 30px;
+
+//WRAPPER SETTINGS
+$margin_wrapper: 40px;
+$margin_wrapper_mobile: 72px;
+$max_width: 1400px;
+
+//BREAKPOINT SETTINGS
+$small_breakpoint: 320px !default;
+$medium_breakpoint: 800px !default;
+$large_breakpoint: 1300px !default;
+$wide_breakpoint: 1600px !default;
+
+/*
+----------------------------------
+GRID CLASS
+----------------------------------
+*/
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat($columns, minmax(0, calc(1fr - 20px)));
+  grid-template-columns: repeat($columns, 1fr);
+  grid-row-gap: 0;
+
+  @include at-least(medium) {
+    grid-column-gap: $gutters;
+  }
+}
+
+@include at-least(small) {
+  @include parse-columns('s');
+}
+
+@include at-least(medium) {
+  @include parse-columns('m');
+}
+
+@include at-least(large) {
+  @include parse-columns('l');
+}
+
+@include at-least(wide) {
+  @include parse-columns('w');
+}
+
+/*
+----------------------------------
+WRAPPER CLASS
+----------------------------------
+*/
+
+.container {
+  max-width: $max_width;
+
+  @include at-least(medium) {
+    width: calc(100% - #{$margin_wrapper});
+  }
+
+  @include up-to(medium) {
+    width: calc(100% - #{$margin_wrapper_mobile});
+  }
+
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.flex {
+  display: flex;
+}
+
+.justify-content-end {
+  justify-content: end;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.justify-content-space-bet {
+  justify-content: space-between;
+}
+
+.center-event {
+  @include at-least(medium) {
+    grid-column-start: 3;
+    grid-column-end: 11;
+  }
+  @include at-least(large) {
+    grid-column-start: 4;
+    grid-column-end: 10;
+  }
+}
+
+.align-item-stretch {
+  align-items: stretch;
+}
+
+.gap-50 {
+  @include at-least(medium) {
+    row-gap: 50px;
+  }
+
+  @include up-to(medium) {
+    row-gap: 40px;
+    margin-bottom: 40px;
+  }
+}
+
+.grid-4 {
+  @include up-to(medium) {
+    grid-template-columns: repeat(4, 1fr) !important;
+    grid-column-gap: 20px;
+  }
+}
+.center-4-col{
+  grid-column-start: 2;
+  grid-column-end: 4;
+}

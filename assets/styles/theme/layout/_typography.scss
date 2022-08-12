@@ -1,0 +1,63 @@
+$light: 100;
+$regular: 400;
+$bold: 700;
+$black: 900;
+
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.h1,
+h1 {
+  @include at-least(large){
+    font-size: 4rem;
+  }
+  @include up-to(large){
+    font-size: 3rem;
+  }
+  @include up-to(medium){
+    font-size: 2.5rem;
+  }
+  text-transform: uppercase;
+  font-weight: $black;
+  line-height: 1.2;
+  color: $blue;
+  margin-bottom: 40px;
+}
+
+.h2 {
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-weight: $bold;
+  line-height: 1.2;
+  color: $blue;
+  margin-bottom: 40px;
+}
+
+.h3 {
+  font-size: 2rem;
+  font-weight: $bold;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+p {
+  margin-bottom: 2rem;
+  margin-top: 0;
+}
+
+.bold {
+  font-weight: $bold;
+}
+
+strong {
+  font-weight: $bold;
+}
+

@@ -1,0 +1,194 @@
+.module-welcome {
+  text-align: center;
+
+  @include at-least(medium) {
+    padding: 365px 0 185px 0;
+  }
+
+  @include up-to(medium) {
+    padding: 235px 0 50px 0;
+
+  }
+
+  color: $blue;
+
+  @include up-to(medium) {
+    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.20) 100%);
+      // url('../images/img-modules/SLIDER.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+
+  @include at-least(medium) {
+    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.50) 70%, rgba(255, 255, 255, 0.20) 100%);
+      // url('../images/img-modules/SLIDER.jpg');
+    background-size: cover;
+  }
+
+  h1 {
+    @include at-least(medium) {
+      margin-bottom: 80px !important;
+    }
+
+    @include up-to(medium) {
+      margin-bottom: 25px !important;
+    }
+  }
+
+  .box-link {
+    @include at-least(medium) {
+      font-size: 2.5rem;
+    }
+
+    p {
+      margin: 10px 0;
+
+      @include up-to(medium) {
+        font-size: 1.8rem;
+      }
+    }
+
+    .links {
+      text-transform: uppercase;
+      font-weight: $bold;
+
+      @include up-to(medium) {
+        font-size: 1.6rem;
+      }
+
+      @include up-to(medium) {
+        display: inline-flex;
+        flex-direction: column;
+
+        a {
+          margin: 15px 0px;
+        }
+      }
+
+      @include at-least(medium) {
+        a {
+          margin: 0px 25px;
+
+          i {
+            margin-right: 16px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.orpha-service {
+  @include up-to(medium) {
+    margin: 0 auto 50px auto;
+
+  }
+
+  @include at-least(medium) {
+    margin: 0 auto 150px auto;
+  }
+
+  .card {
+    border-radius: 30px;
+
+    @include up-to(large) {
+      padding: 45px;
+    }
+
+    @include at-least(large) {
+      padding: 75px;
+    }
+
+    figure {
+      @include at-least(medium) {
+        margin: 0 0 50px 0;
+      }
+
+      @include up-to(medium) {
+        margin: 0 0 25px 0;
+      }
+
+      img {
+        @include up-to(medium) {
+          width: 65%;
+
+        }
+
+        @include at-least(medium) {
+          width: 40%;
+        }
+      }
+    }
+
+  }
+
+  .orphanet {
+    @include up-to(medium) {
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style: disc;
+      padding: 0 0 0 15px;
+
+      @include at-least(medium) {
+        font-size: 1.8rem;
+      }
+
+      @include up-to(medium) {
+        font-size: 1.6rem;
+      }
+
+      li::marker {
+        font-size: 0.6em;
+      }
+    }
+
+    #redirect-lang {
+      border: 0;
+
+      @include at-least(medium) {
+        margin-left: 20px;
+      }
+
+      outline: none;
+    }
+  }
+
+  .orphadata {
+
+    .data-item {
+      align-items: center;
+
+      @include up-to(medium) {}
+
+      .icon-orange {
+        padding: 20px;
+        border-radius: 50px;
+        background-color: $orange;
+        color: white;
+        font-size: 1.7rem;
+
+        @include at-least(medium) {
+          margin-right: 25px;
+        }
+
+        @include up-to(medium) {
+          margin-right: 10px;
+        }
+      }
+
+      .text-p {
+        margin: 0;
+        font-weight: $bold;
+        font-size: 1.5rem;
+      }
+    }
+
+    .module-action {
+      margin-top: 30px;
+    }
+
+  }
+
+}

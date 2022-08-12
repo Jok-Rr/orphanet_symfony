@@ -1,0 +1,41 @@
+.module-internationalenews {
+  margin-top: 150px;
+  margin-bottom: 150px;
+
+  .h1 {
+    margin-bottom: 76px !important;
+  }
+
+  .news-internation-container {
+    justify-items: center;
+    text-align: center;
+
+
+    .card-news {
+      background-color: #F4F4F4;
+      height: 280px;
+      width: 100%;
+      border-radius: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: column;
+      padding: 40px;
+
+      @include up-to(medium) {
+        margin-bottom: 25px;
+      }
+
+      .content {
+        font-size: 2rem;
+        font-weight: $black;
+        text-transform: uppercase;
+        color: $blue;
+
+        p {
+          margin: 0;
+        }
+      }
+    }
+  }
+}

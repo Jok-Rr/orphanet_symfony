@@ -1,0 +1,39 @@
+.module-infos {
+
+
+  @include at-least(medium) {
+    padding-top: 150px;
+    padding-bottom: 150px;
+  }
+
+  @include up-to(medium) {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
+  .infos-container {
+    display: flex;
+
+    @include at-least(medium) {
+      align-items: flex-end;
+    }
+
+    @include up-to(medium) {
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .infos-card {
+      text-align: center;
+      padding: 0px 15px;
+
+      figure {
+        margin: 0;
+      }
+      @include up-to(medium) {
+        width: 48%;
+        margin-bottom: 40px;
+      }
+    }
+  }
+}

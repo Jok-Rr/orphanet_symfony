@@ -1,0 +1,95 @@
+
+
+// For Common Text Styles
+
+.main-content {
+    padding-bottom: 100px;
+    padding-top: 50px;
+    border-bottom: solid 3px black;
+
+    p, h2, h3, h4, h5, h6, ul, ol, blockquote {
+        width: 90%;
+        max-width: 812px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+.copy {
+
+    img {
+        width: 120%;
+        margin-left: -10%;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    h2 {
+        font-size: 2.4rem;
+        text-transform: uppercase;
+        font-weight: $black;
+        line-height: 1.2;
+        color: $blue;
+        margin-bottom: 40px;
+        margin-top: 50px;
+    }
+    h3 {
+        font-size: 2rem;
+        font-weight: $black;
+        line-height: 1.2;
+        color: $blue;
+        margin-bottom: 20px;
+    }
+    h4 {
+        font-size: 1.6rem;
+        font-weight: $black;
+        line-height: 1.2;
+        margin-bottom: 20px;
+    }
+    p {
+        margin-bottom: 30px;
+    }
+    blockquote {
+        font-size: 2.4rem;
+        margin: 60px auto;
+        border-left: 1px solid;
+    }
+    ul {
+        margin-bottom: 30px;
+        margin-top: -10px;
+        list-style: disc;
+        padding-left: 60px;
+    }
+    ol {
+        margin-bottom: 30px;
+        margin-top: -10px;
+        list-style: decimal;
+        padding-left: 60px;
+    }
+    strong {
+        font-weight: $bold;
+    }
+    a {
+        border-bottom: 2px dotted $blue;
+        &:hover {
+            color: $blue;
+        }
+    }
+    em {
+        font-style: italic;
+    }
+    table {
+        margin: 60px 0;
+
+        td, th {
+            text-align: left;
+            padding: 10px 20px;
+        }
+    }
+}
+
+.header {
+    font-size: 2rem;
+    font-weight: $bold;
+}
+

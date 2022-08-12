@@ -1,0 +1,47 @@
+#files-module {
+  position: relative;
+
+  .module-file {
+
+    @include at-least(medium) {
+      padding-top: 150px;
+      padding-bottom: 150px;
+    }
+  
+    @include up-to(medium) {
+      padding-top: 100px;
+      padding-bottom: 100px;
+    }
+    
+
+    &::after {
+      // content: url('../images/img-modules/right-top-blue.png');
+      top: 0px;
+      position: absolute;
+      right: 0px;
+      z-index: -10;
+    }
+
+    .file_container {
+      div {
+
+        display: inline-flex;
+        align-items: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+
+        i {
+          font-size: 2.5rem;
+          margin-right: 15px;
+
+        }
+
+        a:hover {
+          font-weight: 500;
+        }
+
+      }
+
+    }
+  }
+}

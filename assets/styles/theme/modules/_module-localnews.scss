@@ -1,0 +1,197 @@
+.module-localnews {
+  position: relative;
+
+  .module_title {
+    @include at-least(medium) {
+      width: 15%;
+    }
+  }
+
+  .headmodules {
+    @include at-least(medium) {
+      padding: 140px 0px;
+    }
+
+    @include up-to(medium) {
+      padding-top: 100px;
+      padding-bottom: 60px;
+    }
+
+    position: relative;
+    z-index: 0;
+  }
+
+  .headmodules .container::before {
+    @include at-least(medium) {
+      // content: url("../images/img-modules/white-left.png");
+      top: 30px;
+      position: absolute;
+      left: 12.5%;
+      z-index: 1;
+    }
+  }
+
+  .botmodules {
+    @include up-to(medium) {
+      margin-top: -50px;
+    }
+  }
+
+  .owl-carousel {
+    @include at-least(medium) {
+      margin-top: -390px;
+    }
+
+    @include up-to(medium) {
+      margin-top: 0px;
+    }
+
+    .navigation-slider {
+      background-color: rebeccapurple;
+
+      .owl-dots {
+
+        &>.owl-dot .active {
+          font-family: "Font Awesome 6 Pro";
+          font-weight: 900;
+        }
+
+      }
+    }
+  }
+}
+
+
+
+// CARD FOR SLIDES
+
+.slider-card {
+  border-radius: 20px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: 100%;
+
+  .card-media {
+    margin: 0;
+    overflow: hidden;
+    width: 100%;
+    @include up-to(medium) {
+      height: 225px;
+    }
+    @include at-least(medium) {
+      height: 300px;
+    }
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+}
+
+.slider-card-content {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1 1 auto;
+
+  .content {
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      background: linear-gradient(0deg, white 0%, rgba(255, 255, 255, .2) 100%);
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 82px;
+    }
+  }
+
+  .slider-card-action {
+    width: 100%;
+
+    .btn-primary {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+}
+
+
+
+
+// NAV FOR SLIDERS
+
+.navigation-slider {
+  @include at-least(medium) {
+    padding-bottom: 150px;
+  }
+
+  @include up-to(medium) {
+    padding-bottom: 100px;
+  }
+
+  display: flex;
+  align-items: center;
+  justify-content: end;
+
+  .owl-nav {
+    display: flex;
+
+    .owl-prev,
+    .owl-next {
+      background-color: $blue;
+      padding: 15px;
+      color: $white;
+      border-radius: 100%;
+      width: 20px;
+      height: 20px;
+      position: relative;
+      display: flex;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      margin: 0 10px 0 10px;
+
+      i {
+        font-size: 1.5rem;
+      }
+
+      &:hover {
+        filter: brightness(1.5);
+      }
+    }
+  }
+
+  #carousel-custom-dots {
+    display: flex;
+    margin-right: 15px;
+
+    .owl-dot {
+      color: $blue;
+
+      button {
+        border: none;
+        background: none;
+      }
+    }
+
+    .active .owl-dot i {
+      font-family: "Font Awesome 6 Pro";
+      font-weight: 900;
+      transition: 1s;
+    }
+
+  }
+}

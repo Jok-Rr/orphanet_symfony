@@ -17,17 +17,29 @@ class Event
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
-    #[ORM\Column(type: Types::TEXT)]
+    #[ORM\Column]
+    private ?bool $external_link = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $external_url = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $header = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $content = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $create_at = null;
-
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $updated_at = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $hero_pic = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $author = null;
+    private ?string $slug = null;
+
+    #[ORM\Column]
+    private ?\DateTimeImmutable $created_at = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $updated_at = null;
 
     public function getId(): ?int
     {
@@ -46,50 +58,98 @@ class Event
         return $this;
     }
 
+    public function isExternalLink(): ?bool
+    {
+        return $this->external_link;
+    }
+
+    public function setExternalLink(bool $external_link): self
+    {
+        $this->external_link = $external_link;
+
+        return $this;
+    }
+
+    public function getExternalUrl(): ?string
+    {
+        return $this->external_url;
+    }
+
+    public function setExternalUrl(?string $external_url): self
+    {
+        $this->external_url = $external_url;
+
+        return $this;
+    }
+
+    public function getHeader(): ?string
+    {
+        return $this->header;
+    }
+
+    public function setHeader(?string $header): self
+    {
+        $this->header = $header;
+
+        return $this;
+    }
+
     public function getContent(): ?string
     {
         return $this->content;
     }
 
-    public function setContent(string $content): self
+    public function setContent(?string $content): self
     {
         $this->content = $content;
 
         return $this;
     }
 
-    public function getCreateAt(): ?\DateTimeInterface
+    public function getHeroPic(): ?string
     {
-        return $this->create_at;
+        return $this->hero_pic;
     }
 
-    public function setCreateAt(\DateTimeInterface $create_at): self
+    public function setHeroPic(?string $hero_pic): self
     {
-        $this->create_at = $create_at;
+        $this->hero_pic = $hero_pic;
 
         return $this;
     }
 
-    public function getUpdatedAt(): ?\DateTimeInterface
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->created_at;
+    }
+
+    public function setCreatedAt(\DateTimeImmutable $created_at): self
+    {
+        $this->created_at = $created_at;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeImmutable
     {
         return $this->updated_at;
     }
 
-    public function setUpdatedAt(\DateTimeInterface $updated_at): self
+    public function setUpdatedAt(?\DateTimeImmutable $updated_at): self
     {
         $this->updated_at = $updated_at;
-
-        return $this;
-    }
-
-    public function getAuthor(): ?string
-    {
-        return $this->author;
-    }
-
-    public function setAuthor(string $author): self
-    {
-        $this->author = $author;
 
         return $this;
     }

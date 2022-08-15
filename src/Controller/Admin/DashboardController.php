@@ -28,25 +28,29 @@ class DashboardController extends AbstractDashboardController
   public function configureDashboard(): Dashboard
   {
     return Dashboard::new()
-      ->setTitle('Orphanet');
+      ->setTitle('DASHBOARD');
   }
 
   public function configureMenuItems(): iterable
   {
-    yield MenuItem::section('Tableau de Bord', 'fa fa-home');
-    yield MenuItem::section('Evenements', 'fa fa-home');
+    return [
+      MenuItem::section('Pages', 'fa-solid fa-file-lines'),
+      MenuItem::linkToCrud('Voir les pages', 'fa fa-eye', Page::class),
+      MenuItem::linkToCrud('Créer une page', 'fa fa-plus', Page::class)->setAction(Crud::PAGE_NEW),
 
-    yield MenuItem::subMenu('Actions', 'fa fa-bars')->setSubItems([
+      MenuItem::section('Evènements', 'fa-solid fa-calendar'),
+      MenuItem::linkToCrud('Voir les évenements', 'fa fa-eye', Event::class),
       MenuItem::linkToCrud('Créer un évenement', 'fa fa-plus', Event::class)->setAction(Crud::PAGE_NEW),
-      MenuItem::linkToCrud('Voir les évenements', 'fa fa-eye', Event::class)
-    ]);
 
-    yield MenuItem::section('Pages', 'fa fa-page');
+      MenuItem::section('Actualités', 'fa-solid fa-newspaper'),
+      MenuItem::linkToCrud('Voir les actualités', 'fa fa-eye', Event::class),
+      MenuItem::linkToCrud('Créer une actualité', 'fa fa-plus', Event::class)->setAction(Crud::PAGE_NEW),
+
+      MenuItem::section('Utilisateurs', 'fa-solid fa-users'),
+      MenuItem::linkToCrud('Voir les utilisateurs', 'fa fa-eye', Event::class),
+      MenuItem::linkToCrud('Créer un utilisateur', 'fa fa-plus', Event::class)->setAction(Crud::PAGE_NEW),
 
 
-    yield MenuItem::subMenu('Actions', 'fa fa-bars')->setSubItems([
-      MenuItem::linkToCrud('Créer une pages', 'fa fa-plus', Page::class)->setAction(Crud::PAGE_NEW),
-      MenuItem::linkToCrud('Voir les pages', 'fa fa-eye', Page::class)
-    ]);
+    ];
   }
 }

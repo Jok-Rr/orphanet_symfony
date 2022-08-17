@@ -3,7 +3,7 @@
 /app/logs/*
 !app/cache/.gitkeep
 !app/logs/.gitkeep
-/app/public/upload/*
+
 # Email spool folder
 /app/spool/*
 
@@ -57,3 +57,7 @@
 npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
+
+# Custom
+public/upload/*
+migrations/*

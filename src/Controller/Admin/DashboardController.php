@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Event;
 use App\Entity\Page;
+use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -22,6 +23,7 @@ class DashboardController extends AbstractDashboardController
   public function index(): Response
   {
     $url = $this->adminUrlGenerator->setController(EventCrudController::class)->generateUrl();
+    
     return $this->redirect($url);
   }
 
@@ -47,9 +49,8 @@ class DashboardController extends AbstractDashboardController
       MenuItem::linkToCrud('Créer une actualité', 'fa fa-plus', Event::class)->setAction(Crud::PAGE_NEW),
 
       MenuItem::section('Utilisateurs', 'fa-solid fa-users'),
-      MenuItem::linkToCrud('Voir les utilisateurs', 'fa fa-eye', Event::class),
-      MenuItem::linkToCrud('Créer un utilisateur', 'fa fa-plus', Event::class)->setAction(Crud::PAGE_NEW),
-
+      MenuItem::linkToCrud('Voir les utilisateurs', 'fa fa-eye', User::class),
+      MenuItem::linkToCrud('Créer un utilisateur', 'fa fa-plus', User::class)->setAction(Crud::PAGE_NEW),
 
     ];
   }

@@ -2,12 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\EventRepository;
+use App\Repository\NewsRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: EventRepository::class)]
-class Event
+#[ORM\Entity(repositoryClass: NewsRepository::class)]
+class News
 {
   #[ORM\Id]
   #[ORM\GeneratedValue]
@@ -17,14 +17,14 @@ class Event
   #[ORM\Column(length: 255)]
   private ?string $title = null;
 
-  #[ORM\Column(length: 255)]
-  private ?string $content = null;
-
   #[ORM\Column(length: 255, nullable: true)]
   private ?string $external_url = null;
 
   #[ORM\Column(type: Types::TEXT, nullable: true)]
   private ?string $header = null;
+
+  #[ORM\Column(type: Types::TEXT, nullable: true)]
+  private ?string $content = null;
 
   #[ORM\Column(length: 255, nullable: true)]
   private ?string $hero_pic = null;
@@ -39,10 +39,7 @@ class Event
   private ?\DateTimeImmutable $updated_at = null;
 
   #[ORM\Column]
-  private ?\DateTimeImmutable $event_date = null;
-
-  #[ORM\Column(length: 255)]
-  private ?string $event_place = null;
+  private ?bool $international = null;
 
   public function getId(): ?int
   {
@@ -57,18 +54,6 @@ class Event
   public function setTitle(string $title): self
   {
     $this->title = $title;
-
-    return $this;
-  }
-
-  public function getContent(): ?string
-  {
-    return $this->content;
-  }
-
-  public function setContent(string $content): self
-  {
-    $this->content = $content;
 
     return $this;
   }
@@ -93,6 +78,18 @@ class Event
   public function setHeader(?string $header): self
   {
     $this->header = $header;
+
+    return $this;
+  }
+
+  public function getContent(): ?string
+  {
+    return $this->content;
+  }
+
+  public function setContent(?string $content): self
+  {
+    $this->content = $content;
 
     return $this;
   }
@@ -145,27 +142,15 @@ class Event
     return $this;
   }
 
-  public function getEventDate(): ?\DateTimeImmutable
+  public function isInternational(): ?bool
   {
-    return $this->event_date;
+      return $this->international;
   }
 
-  public function setEventDate(\DateTimeImmutable $event_date): self
+  public function setInternational(bool $international): self
   {
-    $this->event_date = $event_date;
+      $this->international = $international;
 
-    return $this;
-  }
-
-  public function getEventPlace(): ?string
-  {
-    return $this->event_place;
-  }
-
-  public function setEventPlace(string $event_place): self
-  {
-    $this->event_place = $event_place;
-
-    return $this;
+      return $this;
   }
 }

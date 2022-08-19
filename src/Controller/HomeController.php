@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\News;
 use App\Entity\Page;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -11,16 +12,16 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
   #[Route('/', name: 'app_home')]
-  public function index(): Response
+  public function index(ManagerRegistry $doctrine): Response
   {
-
-    return $this->render('home/index.html.twig', []);
+    $news = $doctrine->getRepository(News::class)->findBy(['international' => 0], ['id' => 'DESC'], 5);
+    $news_international = $doctrine->getRepository(News::class)->findBy(['international' => 1], ['id' => 'DESC'], 3);
+    return $this->render('home/index.html.twig', ['news' => $news, 'news_international' => $news_international]);
   }
 
   public function navigation(ManagerRegistry $doctrine): Response
   {
     $page = $doctrine->getRepository(Page::class)->findBy(['in_navigation' => 1]);
-
     return $this->render('_navigation.html.twig', [
       'navigation' => $page
     ]);

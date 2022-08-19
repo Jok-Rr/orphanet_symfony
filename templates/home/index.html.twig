@@ -144,61 +144,33 @@
 
 					<div class="owl-stage-outer">
 						<div class="owl-stage" style="transition: all 0s ease 0s; width: 575px; transform: translate3d(331px, 0px, 0px);">
-							<div class="owl-item active center" style="width: 257.152px; margin-right: 30px;">
-								<article class="slider-card bgd-white item" data-dot="<button class='owl-dot'><i class='fa-regular fa-circle-small'></i></button>">
+							{% for item in news %}
+								<div class="owl-item active" style="width: 257.152px; margin-right: 30px;">
+									<article class="slider-card bgd-white item" data-dot="<button class='owl-dot'><i class='fa-regular fa-circle-small'></i></button>">
 
-									<figure class="card-media">
+										<figure class="card-media">
+											<img src="{{ asset('upload/pages/' ~ item.getHeroPic() ) }}" alt="">
+										</figure>
 
+										<div class="slider-card-content">
 
-										<img title="Les actualités en france" alt="Les actualités en france" src="/user/pages/08.news/ecrd-2022-appel-a-poster-et-webconference-sur-les-politiques-maladie-rare/32.jpg" srcset="/images/9/c/d/3/a/9cd3afd7bb16582bdb0a226bd2b1e0826ee71ecf-32400w.jpg 400w, /images/8/5/2/9/a/8529af99ff5cd4b97c0f6919664ceac2482ce4d0-32800w.jpg 800w, /images/9/c/a/2/5/9ca25cbb2ed7f5774c78470f3752902262cb6e60-321200w.jpg 1200w, /images/d/b/3/6/6/db36689c3a81e8b2295385b3d74b6e21e3c1a01a-321600w.jpg 1600w, /images/1/9/e/2/4/19e2440c0db93e13428bd7629ab4247336c5b522-322000w.jpg 2000w, /images/f/8/f/1/5/f8f157796960217a9e1ae893237928516f718375-322400w.jpg 2400w, /user/pages/08.news/ecrd-2022-appel-a-poster-et-webconference-sur-les-politiques-maladie-rare/32.jpg 3130w" sizes="(min-width: 800px) 20vw, 100vw">
+											<div class="content">
+												<h2 class="h2">{{ item.title }}</h2>
+												<p>
+													{{ item.header |length > 200 ? item.header|slice(0, 200)|striptags ~ '...' : item.header|striptags  }}
+												</p>
+											</div>
 
-									</figure>
+											<div class="slider-card-action">
+												<a href="{{ not item.getExternalUrl() is empty ? item.getExternalUrl() : path('single_new', {'slug': item.slug }) }}" target="{{ not item.getExternalUrl() is empty ? "_blank" : "" }}" class="{{ item.getExternalUrl() is empty ? 'btn-primary' : 'btn-extern' }}">{{ "<span class='btn-label'>En savoir +</span>" }}
+												</a>
+											</div>
 
-									<div class="slider-card-content">
-
-										<div class="content">
-											<h2 class="h2">ECRD 2022 : Appel à poster, et webconférence sur les politiques "maladie rare".</h2>
-											<p>
-												ECRD 2022 : Appel à poster, et webconférence sur les politiques "maladie rare". ECRD 2022 : Appel à poster, et webconférence sur les politiques "maladie rare".
-
-
-											</p>
 										</div>
 
-										<div class="slider-card-action">
-											<a href="/news/ecrd-2022-appel-a-poster-et-webconference-sur-les-politiques-maladie-rare" target="" class="btn-primary">
-												<span class="btn-label">En savoir +</span>
-											</a>
-										</div>
-
-									</div>
-
-								</article>
-							</div>
-							<div class="owl-item active" style="width: 257.152px; margin-right: 30px;">
-								<article class="slider-card bgd-white item" data-dot="<button class='owl-dot'><i class='fa-regular fa-circle-small'></i></button>">
-
-									<figure class="card-media"></figure>
-
-									<div class="slider-card-content">
-
-										<div class="content">
-											<h2 class="h2">Une actualité locale</h2>
-											<p>
-												lorem ipsum.... lorem ipsum.... lorem ipsum.... lorem ipsum.... lorem ipsum....
-											</p>
-										</div>
-
-										<div class="slider-card-action">
-											<a href="http://thomasflorentin.net" target="_blank" class="btn-extern">
-												<span class="btn-label">En savoir +</span>
-											</a>
-										</div>
-
-									</div>
-
-								</article>
-							</div>
+									</article>
+								</div>
+							{% endfor %}
 						</div>
 					</div>
 					<div class="owl-nav disabled">
@@ -298,20 +270,20 @@
 					<div class="s_12col m_4col">
 						<i class="fa-regular fa-file-pdf"></i>
 						<a href="/user/themes/orphanet/files/Specification_RefonteManhor_110322_mh_GRAV.pdf" target="_blank">3ème Plan national Maladies Rares
-																												[PDF
-																												-
-																												0.6
-																												Mo]</a>
+																																																																																											[PDF
+																																																																																											-
+																																																																																											0.6
+																																																																																											Mo]</a>
 					</div>
 
 
 					<div class="s_12col m_4col">
 						<i class="fa-regular fa-file-pdf"></i>
 						<a href="/user/themes/orphanet/files/KOTLIN3.pdf" target="_blank">2 ème Plan national Maladies Rares
-																												[PDF
-																												-
-																												0.3
-																												Mo]</a>
+																																																																																											[PDF
+																																																																																											-
+																																																																																											0.3
+																																																																																											Mo]</a>
 					</div>
 
 
@@ -355,10 +327,10 @@
 					<div class="s_12col m_4col">
 						<i class="fa-regular fa-file-pdf"></i>
 						<a href="/user/themes/orphanet/files/Specification_RefonteManhor_110322_mh_GRAV.pdf" target="_blank">20ème Forum des associations NTIC
-																												[PDF
-																												-
-																												0.6
-																												Mo]</a>
+																																																																																											[PDF
+																																																																																											-
+																																																																																											0.6
+																																																																																											Mo]</a>
 					</div>
 
 
@@ -378,31 +350,31 @@
 				<div class="infos-container">
 					<div class="infos-card">
 						<figure>
-							<img src="/user/themes/orphanet/images/img-modules/ORPHANET_BREF.png" alt="">
+							<img src="{{ asset('images/img-modules/ORPHANET_BREF.svg') }}" alt="">
 						</figure>
 						<a class="btn-primary" href="https://www.orpha.net/consor4.01/www/cgi-bin/Education_AboutOrphanet.php?lng=FR">Orphanet en bref</a>
 					</div>
 					<div class="infos-card">
 						<figure>
-							<img src="/user/themes/orphanet/images/img-modules/MALADIES RARES.png" alt="">
+							<img src="{{ asset('images/img-modules/MALADIES_RARES.svg') }}" alt="">
 						</figure>
 						<a class="btn-primary" href="https://www.orpha.net/consor4.01/www/cgi-bin/Education_AboutRareDiseases.php?lng=FR">Les maladies rares</a>
 					</div>
 					<div class="infos-card">
 						<figure>
-							<img src="/user/themes/orphanet/images/img-modules/MEDICAMENTS_ORPHELINS.png" alt="">
+							<img src="{{ asset('images/img-modules/MEDICAMENTS_ORPHELINS.svg') }}" alt="">
 						</figure>
 						<a class="btn-primary" href="https://www.orpha.net/consor4.01/www/cgi-bin/Education_AboutOrphanDrugs.php?lng=FR">Les médicaments orphelins</a>
 					</div>
 					<div class="infos-card">
 						<figure>
-							<img src="/user/themes/orphanet/images/img-modules/CHARTE_QUALITE.png" alt="">
+							<img src="{{ asset('images/img-modules/CHARTE_QUALITE.svg') }}" alt="">
 						</figure>
 						<a class="btn-primary" href="https://www.orpha.net/consor4.01/www/cgi-bin/Education_AboutHealthCarePolicies.php?lng=FR">Charte qualité</a>
 					</div>
 					<div class="infos-card">
 						<figure>
-							<img src="/user/themes/orphanet/images/img-modules/ACTUALITES.png" alt="">
+							<img src="{{ asset('images/img-modules/ACTUALITES.svg') }}" alt="">
 						</figure>
 						<a class="btn-primary" href="https://international.orphanews.org/home.html?Ltr=EuropaNews">Newsletter</a>
 					</div>
@@ -415,18 +387,18 @@
 			<div class="container">
 				<h4 class="h1">Actualité internationale</h4>
 				<div class="news-internation-container grid">
+					{% for item in news_international %}
+						<div class="m_4col s_12col card-news">
+							<div class="content">
+								<p>{{ item.title }}</p>
+							</div>
+							<a href="{{ not item.getExternalUrl() is empty ? item.getExternalUrl() : path('single_new', {'slug': item.slug }) }}" target="{{ not item.getExternalUrl() is empty ? "_blank" : "" }}" class="{{ item.getExternalUrl() is empty ? 'btn-primary' : 'btn-extern' }}">{{ "<span class='btn-label'>En savoir +</span>" }}
+												</a>
 
-
-					<div class="m_4col s_12col card-news">
-						<div class="content">
-							<p>Ceci est une actualité internationale</p>
 						</div>
-						<a href="/news/actualite-2-jai-sommeil" target="" class="btn-primary">
-							<span class="btn-label">En savoir +</span>
-						</a>
-
-					</div>
+					{% endfor %}
 				</div>
+
 			</div>
 		</section>
 

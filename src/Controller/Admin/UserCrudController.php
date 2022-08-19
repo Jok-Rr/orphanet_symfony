@@ -6,7 +6,6 @@ use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class UserCrudController extends AbstractCrudController
 {
@@ -27,10 +26,4 @@ class UserCrudController extends AbstractCrudController
         ->hideOnIndex()
     ];
   }
-
-  public function __construct(UserPasswordHasherInterface $hasher)
-  {
-    $this->hasher = $hasher;
-  }
-
 }

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ data.title }}
+{% endblock %}
+
+{% block body %}
+
+
+	<div id="hero-content">
+		<div class="module-hero" style="background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.50) 50%, rgba(255, 255, 255, 0.20) 100%),url('{{ asset('upload/pages/' ~ data.getHeroPic() ) }}');background-size: cover;">
+
+			<div class="container">
+				<h1 class="h1">{{ data.title }}</h1>
+			</div>
+		</div>
+		<div class="container-mkdw main-content">
+			<div class="header copy">{{data.header|striptags}}</div>
+			<div class="content copy">{{data.content|striptags}}</div>
+		</div>
+		<div class="content-footer container-mkdw flex justify-content-space-bet">
+			<p>Mise à jour le
+				{{ data.getUpdatedAt()|date('d/m/Y') }}</p>
+			<div class="flex">
+				<p>A PARTAGER SUR</p>
+				<a id="sharelink-Facebook" target="_blank" href="">
+					<i class="fa-brands fa-facebook-square"></i>
+				</a>
+				<a id="sharelink-Linkedin" target="_blank" href="">
+					<i class="fa-brands fa-linkedin"></i>
+				</a>
+				<a id="sharelink-Twitter" target="_blank" href="">
+					<i class="fa-brands fa-twitter-square"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+{% endblock %}

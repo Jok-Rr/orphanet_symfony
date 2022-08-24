@@ -45,6 +45,7 @@ class DashboardController extends AbstractDashboardController
     $numUsers = $this->users->countUser();
     $numPages = $this->pages->countPage();
     return [
+      MenuItem::linkToUrl('Aller sur Orphanet', 'fa-solid fa-arrow-left', '/'),
       MenuItem::section('Pages', 'fa-solid fa-file-lines')->setBadge($numPages, 'secondary'),
       MenuItem::linkToCrud('Voir les pages', 'fa fa-eye', Page::class),
       MenuItem::linkToCrud('Créer une page', 'fa fa-plus', Page::class)->setAction(Crud::PAGE_NEW),

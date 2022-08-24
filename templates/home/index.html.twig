@@ -220,39 +220,42 @@
 
 						<div class="event_container">
 
+							{% for item in events %}
+								<article class="grid">
 
-							<article class="grid">
-
-								<div class=" m_2col">
-									<div class="ratio_square">
-										<div class="ratio_inner">
-											<p class="flex event-date text-uppercase">
-												01-09
-												<br>
-												2022</p>
+									<div class=" m_2col">
+										<div class="ratio_square">
+											<div class="ratio_inner">
+												<p class="flex event-date text-uppercase">
+													{{ item.getUpdatedAt()|date('d-m') }}
+													<br>
+													{{ item.getUpdatedAt()|date('Y') }}</p>
+											</div>
 										</div>
+
 									</div>
 
-								</div>
+									<div class="event-content  m_9col">
+										<h3 class="h3">{{ item.title }}</h3>
+										<p>{{ item.header |length > 200 ? item.header|slice(0, 200)|striptags ~ '...' : item.header|striptags  }}</p>
 
-								<div class="event-content  m_9col">
-									<h3 class="h3">Conférence</h3>
-									<p>ident sint voluptate ea Lorem occaecat nostrud id proident in enim ex. Sint Lorem occaecat sit irure quis nostrud reprehenderit in cillum ut.
-									</p>
+										<div class="event_action">
+											<i class="fa-solid fa-arrow-right"></i>
+											<a href="/events/conference" class=""></a>
 
-									<div class="event_action">
-										<i class="fa-solid fa-arrow-right"></i>
-										<a href="/events/conference" target="" class="">En savoir plus</a>
+											<a href="{{ not item.getExternalUrl() is empty ? item.getExternalUrl() : path('single_event', {'slug': item.slug }) }}" target="{{ not item.getExternalUrl() is empty ? "_blank" : "" }}" class="">En savoir plus
+											</a>
+										</div>
+
 									</div>
 
-								</div>
-
-							</article>
+								</article>
+							{% endfor %}
 						</div>
 
 						<div class="module_action">
 							<i class="fa-solid fa-arrow-right"></i>
-							<a href="/events" class="bold">TOUS LES ÉVÉNEMENTS</a>
+							<a href="{{path('all_event')}}" class="bold">TOUS LES ÉVÉNEMENTS</a>
 						</div>
 					</div>
 				</div>
@@ -270,20 +273,20 @@
 					<div class="s_12col m_4col">
 						<i class="fa-regular fa-file-pdf"></i>
 						<a href="/user/themes/orphanet/files/Specification_RefonteManhor_110322_mh_GRAV.pdf" target="_blank">3ème Plan national Maladies Rares
-																																																																																											[PDF
-																																																																																											-
-																																																																																											0.6
-																																																																																											Mo]</a>
+																																																																																																																							[PDF
+																																																																																																																							-
+																																																																																																																							0.6
+																																																																																																																							Mo]</a>
 					</div>
 
 
 					<div class="s_12col m_4col">
 						<i class="fa-regular fa-file-pdf"></i>
 						<a href="/user/themes/orphanet/files/KOTLIN3.pdf" target="_blank">2 ème Plan national Maladies Rares
-																																																																																											[PDF
-																																																																																											-
-																																																																																											0.3
-																																																																																											Mo]</a>
+																																																																																																																							[PDF
+																																																																																																																							-
+																																																																																																																							0.3
+																																																																																																																							Mo]</a>
 					</div>
 
 
@@ -327,10 +330,10 @@
 					<div class="s_12col m_4col">
 						<i class="fa-regular fa-file-pdf"></i>
 						<a href="/user/themes/orphanet/files/Specification_RefonteManhor_110322_mh_GRAV.pdf" target="_blank">20ème Forum des associations NTIC
-																																																																																											[PDF
-																																																																																											-
-																																																																																											0.6
-																																																																																											Mo]</a>
+																																																																																																																							[PDF
+																																																																																																																							-
+																																																																																																																							0.6
+																																																																																																																							Mo]</a>
 					</div>
 
 
@@ -393,7 +396,7 @@
 								<p>{{ item.title }}</p>
 							</div>
 							<a href="{{ not item.getExternalUrl() is empty ? item.getExternalUrl() : path('single_new', {'slug': item.slug }) }}" target="{{ not item.getExternalUrl() is empty ? "_blank" : "" }}" class="{{ item.getExternalUrl() is empty ? 'btn-primary' : 'btn-extern' }}">{{ "<span class='btn-label'>En savoir +</span>" }}
-												</a>
+							</a>
 
 						</div>
 					{% endfor %}

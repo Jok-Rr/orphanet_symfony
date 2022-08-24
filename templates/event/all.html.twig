@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Tous les événements
+{% endblock %}
+
+{% block body %}
+
+
+	<div id="module-event" class="archive-page">
+
+		<div class="module-event bgd-blue clr-white" id="events">
+
+			<div class="container grid">
+				<div class="s_12col m_8col center-event">
+					<div class="">
+						<h4 class="h1 clr-white">Tous les événements</h4>
+						<div class="event_container">
+
+							{% for item in data %}
+								<article class="grid">
+
+									<div class=" m_2col">
+										<div class="ratio_square">
+											<div class="ratio_inner">
+												<p class="flex event-date text-uppercase">
+													{{ item.getUpdatedAt()|date('d-m') }}
+													<br>
+													{{ item.getUpdatedAt()|date('Y') }}</p>
+											</div>
+										</div>
+
+									</div>
+
+									<div class="event-content  m_9col">
+										<h3 class="h3">{{ item.title }}</h3>
+										<p>{{ item.header |length > 200 ? item.header|slice(0, 200)|striptags ~ '...' : item.header|striptags  }}</p>
+
+										<div class="event_action">
+											<i class="fa-solid fa-arrow-right"></i>
+											<a href="/events/conference" class=""></a>
+
+											<a href="{{ not item.getExternalUrl() is empty ? item.getExternalUrl() : path('single_event', {'slug': item.slug }) }}" target="{{ not item.getExternalUrl() is empty ? "_blank" : "" }}" class="">En savoir plus
+											</a>
+										</div>
+
+									</div>
+
+								</article>
+							{% endfor %}
+
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+	{% endblock %}

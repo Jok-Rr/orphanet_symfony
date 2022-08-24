@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Event;
+use App\Entity\File;
 use App\Entity\News;
 use App\Entity\Page;
 use Doctrine\Persistence\ManagerRegistry;
@@ -18,8 +19,9 @@ class HomeController extends AbstractController
     $news = $doctrine->getRepository(News::class)->findBy(['international' => 0], ['id' => 'DESC'], 5);
     $events = $doctrine->getRepository(Event::class)->findBy([], ['id' => 'DESC'], 3);
     $news_international = $doctrine->getRepository(News::class)->findBy(['international' => 1], ['id' => 'DESC'], 3);
-    
-    return $this->render('home/index.html.twig', ['events' => $events, 'news' => $news, 'news_international' => $news_international]);
+    $files = $doctrine->getRepository(File::class)->findBy([], ['id' => 'DESC'], 12);
+
+    return $this->render('home/index.html.twig', ['events' => $events, 'news' => $news, 'news_international' => $news_international, 'files' => $files]);
   }
 
   public function navigation(ManagerRegistry $doctrine): Response

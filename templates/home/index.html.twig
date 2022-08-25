@@ -279,15 +279,13 @@
 
 						{% else %}
 
-							{% set filesize = item.getFileSize() / 1000000 %}
-
 							<div class="s_12col m_4col">
 								<i class="fa-regular fa-file-pdf"></i>
 								<a href="{{ asset('upload/files/'~ item.upload) }}" target="_blank">{{ item.name }}
 									[
 									{{item.extension|upper}}
 									-
-									{{ filesize|number_format(1) }}
+									{{ item.getFileSize()|number_format(2) }}
 									Mo]
 								</a>
 							</div>

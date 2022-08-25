@@ -70,6 +70,8 @@ class NewsCrudController extends AbstractCrudController
   {
     if (!$entityInstance instanceof News) return;
     $entityInstance->setCreatedAt(new \DateTimeImmutable);
+    $entityInstance->setUpdatedAt(new \DateTimeImmutable());
+
     parent::persistEntity($em, $entityInstance);
   }
   public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void

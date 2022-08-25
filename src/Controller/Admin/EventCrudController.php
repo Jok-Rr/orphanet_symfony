@@ -70,6 +70,7 @@ class EventCrudController extends AbstractCrudController
   {
     if (!$entityInstance instanceof Event) return;
     $entityInstance->setCreatedAt(new \DateTimeImmutable);
+    $entityInstance->setUpdatedAt(new \DateTimeImmutable());
     parent::persistEntity($em, $entityInstance);
   }
   public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void

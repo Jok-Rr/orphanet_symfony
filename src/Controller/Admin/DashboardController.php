@@ -12,6 +12,7 @@ use App\Repository\FileRepository;
 use App\Repository\NewsRepository;
 use App\Repository\PageRepository;
 use App\Repository\UserRepository;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -37,9 +38,11 @@ class DashboardController extends AbstractDashboardController
   public function configureDashboard(): Dashboard
   {
     return Dashboard::new()
-      ->setTitle('DASHBOARD');
+      ->setTitle('DASHBOARD')
+      ->setFaviconPath('images/favicon.png');
   }
 
+  
   public function configureMenuItems(): iterable
   {
     $numEvents = $this->events->countEvent();
@@ -62,13 +65,15 @@ class DashboardController extends AbstractDashboardController
       MenuItem::linkToCrud('Ajouter un évenement', 'fa fa-plus', Event::class)->setAction(Crud::PAGE_NEW),
 
       MenuItem::section('Documents', 'fa-solid fa-file')->setBadge($numFiles, 'secondary'),
-      MenuItem::linkToCrud('Voir les documents', 'fa fa-eye', File::class),
+      MenuItem::linkToCrud('Voir les documents', 'fa fa-eye', File::class)->setAction(Crud::PAGE_INDEX),
       MenuItem::linkToCrud('Ajouter un document', 'fa fa-plus', File::class)->setAction(Crud::PAGE_NEW),
 
       MenuItem::section('Utilisateurs', 'fa-solid fa-users')->setBadge($numUsers, 'secondary'),
       MenuItem::linkToCrud('Voir les utilisateurs', 'fa fa-eye', User::class),
       MenuItem::linkToCrud('Ajouter un utilisateur', 'fa fa-plus', User::class)->setAction(Crud::PAGE_NEW),
 
+      MenuItem::section(),
+      MenuItem::linkToLogout('Logout', 'fa-solid fa-right-from-bracket')
     ];
   }
 }

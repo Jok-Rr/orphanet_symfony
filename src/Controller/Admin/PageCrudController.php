@@ -26,7 +26,6 @@ class PageCrudController extends AbstractCrudController
       // Les labels utilisés pour faire référence à l'entité dans les titres, les boutons, etc.
       ->setEntityLabelInSingular('page')
       ->setEntityLabelInPlural('pages')
-
       // Le titre visible en haut de la page et le contenu de l'élément <title>
       // Cela peut inclure ces différents placeholders : %entity_id%, %entity_label_singular%, %entity_label_plural%
       ->setPageTitle('index', 'Liste des %entity_label_plural%')
@@ -47,13 +46,13 @@ class PageCrudController extends AbstractCrudController
         ->setUnlockConfirmationMessage(
           'It is highly recommended to use the automatic slugs, but you can customize them'
         ),
+      BooleanField::new('in_navigation')->renderAsSwitch(true),
       ImageField::new('hero_pic')
         ->setBasePath('/uploads/pages')
         ->setUploadDir('public/upload/pages')
         ->hideOnIndex(),
       TextEditorField::new('header')->hideOnIndex(),
       TextEditorField::new('content')->hideOnIndex(),
-      BooleanField::new('in_navigation')->renderAsSwitch(false),
       DateTimeField::new('created_at')->hideOnForm(),
       DateTimeField::new('updated_at')->hideOnForm()
     ];
@@ -63,7 +62,7 @@ class PageCrudController extends AbstractCrudController
   {
     if (!$entityInstance instanceof Page) return;
     $entityInstance->setCreatedAt(new \DateTimeImmutable);
-    $entityInstance->setUpdatedAt(new \DateTime('now'));
+    $entityInstance->setUpdatedAt(new \DateTimeImmutable());
     parent::persistEntity($em, $entityInstance);
   }
   public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void
